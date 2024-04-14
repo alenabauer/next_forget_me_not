@@ -3,6 +3,8 @@ import { render, fireEvent, screen, cleanup } from '@testing-library/react';
 import TaskInput from '../src/components/task_input';
 import { TaskApi } from '../src/api/task_api';
 
+// todo: mock the API call
+
 describe('Task Input Component', () => {
   let addTaskMock: any;
   let taskApi: TaskApi;

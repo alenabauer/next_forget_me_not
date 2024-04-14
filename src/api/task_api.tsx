@@ -40,4 +40,39 @@ export class TaskApi {
       throw error;
     }
   }
+
+  async updateTask(task: Task): Promise<Task> {
+    try {
+      const response = await fetch(`${this.baseUrl}/tasks/${task.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(task)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update task');
+      }
+
+      const updatedTask: Task = await response.json();
+      return updatedTask;
+    } catch (error) {
+      console.error('Error updating task:', error);
+      throw error;
+    }
+  }
+
+  async deleteTask(taskId: string): Promise<void> {
+    try {
+      const response = await fetch(`${this.baseUrl}/tasks/${taskId}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete task');
+      }
+    } catch (error) {
+      console.error('Error deleting task:', error);
+      throw error;
+    }
+  }
 }
