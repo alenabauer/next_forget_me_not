@@ -19,12 +19,13 @@ describe('Task List Component', () => {
   });
 
   test('displays tasks', async () => {
-    taskApi.getTasks.mockResolvedValueOnce([
+    const tasks = [
       { id: '1', title: 'Task 1', description: 'Description 1', completed: false },
       { id: '2', title: 'Task 2', description: 'Description 2', completed: true }
-    ]);
+    ]
+    taskApi.getTasks.mockResolvedValueOnce(tasks);
 
-    render(<TaskList />);
+    render(<TaskList tasks={tasks} />);
 
     await screen.findByText('Task 1');
 
@@ -33,9 +34,10 @@ describe('Task List Component', () => {
   });
 
   test('displays "Nothing to do!" when no tasks', async () => {
-    taskApi.getTasks.mockResolvedValueOnce([]);
+    const tasks: Task[] = []
+    taskApi.getTasks.mockResolvedValueOnce(tasks);
 
-    render(<TaskList />);
+    render(<TaskList tasks={tasks} />);
 
     await screen.findByText('Nothing to do!');
 

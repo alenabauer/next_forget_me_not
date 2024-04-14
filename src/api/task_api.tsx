@@ -20,4 +20,24 @@ export class TaskApi {
       throw error;
     }
   }
+
+  async createTask(task: Task): Promise<Task> {
+    try {
+      const response = await fetch(`${this.baseUrl}/tasks`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(task)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create task');
+      }
+
+      const createdTask: Task = await response.json();
+      return createdTask;
+    } catch (error) {
+      console.error('Error creating task:', error);
+      throw error;
+    }
+  }
 }
