@@ -1,17 +1,26 @@
+# Forget Me Not: A Simple Todo App
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+This project uses environment variables for configuration. For local development, these variables should be stored in a file named `.env.local`.
 
-First, run the development server:
+Create the file by copying the template file provided in the repository:
+```bash
+cp .env.template .env.local
+```
+Install all the dependencies:
+```bash
+npm install
+```
+Run the JSON server:
+```bash
+npm run json-server
+```
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
